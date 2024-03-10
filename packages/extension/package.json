@@ -1,0 +1,67 @@
+{
+  "name": "extension",
+  "displayName": "extension",
+  "description": "An example for wscode webview developer",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension/extension.js",
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "pnpm run clear:out && tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test",
+    "clear": "rimraf ./out && rimraf ./node_modules",
+    "clear:out": "rimraf ./out/extension"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.87.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "cec-client-server": "^1.3.2",
+    "html-modifier": "^1.2.0",
+    "reflect-metadata": "^0.2.1"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "panel-view-container.show",
+        "title": "xingxingzi Panel View",
+        "category": "vscode-webview-example"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sidebar-view",
+          "title": "sidebar view example",
+          "icon": "assets/icon01.svg"
+        }
+      ]
+    },
+    "views": {
+      "sidebar-view": [
+        {
+          "id": "sidebar-view-container",
+          "type": "webview",
+          "name": "sidebar view"
+        }
+      ]
+    }
+  }
+}
