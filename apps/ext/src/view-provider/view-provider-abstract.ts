@@ -38,7 +38,7 @@ export abstract class AbstractViewProvider implements WebviewViewProvider {
    */
   protected async getWebviewHtml(webview: Webview) {
     const { distDir, indexPath, routePath = '' } = this.wiewProviderOptions
-    // 前端应用的打包结果所在的目录，形如：https://file%2B.vscode-resource.vscode-cdn.net/d%3A/AAAAA/self/vscode-webview-example/packages/extension/out/view-vue
+    // 前端应用的打包结果所在的目录，形如：https://file%2B.vscode-resource.vscode-cdn.net/d%3A/AAAAA/self/vscode-webview-example/apps/extension/out/view-vue
     const publicPath = webview.asWebviewUri(Uri.joinPath(this.context.extensionUri, distDir)).toString()
     // 需要在前端应用中插入的脚本，目的是：将上述 webviewUri 所指的目录告知前端应用，前端应用在定位资源时需要
     const injectInContent = `<script> 

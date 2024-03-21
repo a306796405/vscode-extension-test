@@ -1,5 +1,5 @@
 {
-  "name": "extension",
+  "name": "@hf/ext",
   "displayName": "extension",
   "description": "An example for wscode webview developer",
   "version": "0.0.1",
@@ -10,7 +10,7 @@
     "Other"
   ],
   "activationEvents": [],
-  "main": "./out/extension/extension.js",
+  "main": "./out/ext/extension.js",
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
     "compile": "tsc -p ./",
@@ -19,7 +19,7 @@
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
     "clear": "rimraf ./out && rimraf ./node_modules",
-    "clear:out": "rimraf ./out/extension"
+    "clear:out": "rimraf ./out/ext"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

@@ -1,12 +1,13 @@
 import { ExtensionContext, WebviewView, WebviewViewProvider } from 'vscode'
 import { AbstractViewProvider } from './view-provider-abstract'
+import { routes } from '@hf/ext-common'
 
 export class ViewProviderSidebar extends AbstractViewProvider {
   constructor(context: ExtensionContext) {
     super(context, {
       distDir: 'out/view-vue',
       indexPath: 'out/view-vue/index.html',
-      routePath: '/about'
+      routePath: routes.b.about.path
     })
   }
 
