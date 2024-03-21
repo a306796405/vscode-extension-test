@@ -5,7 +5,8 @@ export class ViewProviderSidebar extends AbstractViewProvider {
   constructor(context: ExtensionContext) {
     super(context, {
       distDir: 'out/view-vue',
-      indexPath: 'out/view-vue/index.html'
+      indexPath: 'out/view-vue/index.html',
+      routePath: '/about'
     })
   }
 
@@ -15,6 +16,8 @@ export class ViewProviderSidebar extends AbstractViewProvider {
       enableScripts: true,
       // localResourceRoots: [this.context.extensionUri]
     }
-    webview.html = await this.getWebviewHtml(webview)
+
+    const webviewHtml = await this.getWebviewHtml(webview)
+    webview.html = webviewHtml
   }
 }

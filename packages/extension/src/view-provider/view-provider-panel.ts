@@ -7,7 +7,7 @@ export class ViewProviderPanel extends AbstractViewProvider {
     // controller,
     super(context, {
       distDir: 'out/view-react',
-      indexPath: 'out/view-react/index.html'
+      indexPath: 'out/view-react/index.html',
     })
   }
 
