@@ -13,8 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hf/ext-common": "workspace:*",
     "path-browserify": "^1.0.1",
-    "@hf/ext-common": "workspace:*"
+    "vscode-messenger": "^0.4.5",
+    "vscode-messenger-common": "^0.4.5",
+    "vscode-messenger-webview": "^0.4.5"
   },
   "devDependencies": {
     "@types/path-browserify": "^1.0.2",

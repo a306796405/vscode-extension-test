@@ -14,6 +14,15 @@ importers:
       path-browserify:
         specifier: ^1.0.1
         version: 1.0.1
+      vscode-messenger:
+        specifier: ^0.4.5
+        version: 0.4.5
+      vscode-messenger-common:
+        specifier: ^0.4.5
+        version: 0.4.5
+      vscode-messenger-webview:
+        specifier: ^0.4.5
+        version: 0.4.5
     devDependencies:
       '@types/path-browserify':
         specifier: ^1.0.2
@@ -4988,6 +4997,22 @@ packages:
       - supports-color
       - terser
     dev: true
+
+  /vscode-messenger-common@0.4.5:
+    resolution: {integrity: sha512-opA+BEYTWdy1fFC3oOw30b0zc/KEuMtw+1pOiH5fEp+BGeA5xff7omSQTZeZJSDJszM471Vi+YY/ipRdRglAlQ==}
+    dev: false
+
+  /vscode-messenger-webview@0.4.5:
+    resolution: {integrity: sha512-pzGB6HoTfPszMF4HQG+u5WMJ959iGLmow6ehYVTZnZjZ+phBKEBtpTYAjJSNotyUfZJ58NCdq5+ZSvMgkAuAJw==}
+    dependencies:
+      vscode-messenger-common: 0.4.5
+    dev: false
+
+  /vscode-messenger@0.4.5:
+    resolution: {integrity: sha512-a6e54dpPRi/ITmVex49LGU6YXlqcuxGPlDPauvZig20G1D1/QD2E8GfhtvlTj3ml5aU/QV3LHghyepq3riy7sw==}
+    dependencies:
+      vscode-messenger-common: 0.4.5
+    dev: false
 
   /vue-component-type-helpers@2.0.7:
     resolution: {integrity: sha512-7e12Evdll7JcTIocojgnCgwocX4WzIYStGClBQ+QuWPinZo/vQolv2EMq4a3lg16TKfwWafLimG77bxb56UauA==}

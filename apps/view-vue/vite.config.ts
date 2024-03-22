@@ -11,7 +11,8 @@ export default defineConfig({
     vueJsx(),
   ],
   build: {
-    outDir: '../ext/out/view-vue'
+    outDir: '../ext/out/view-vue',
+    assetsInlineLimit: 0
   },  
   resolve: {
     alias: {

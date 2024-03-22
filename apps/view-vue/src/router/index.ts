@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import PanelView from '../views/PanelView.vue'
+import SidebarView from '../views/SidebarView.vue'
 import { routes } from '@hf/ext-common'
 
 const router = createRouter({
@@ -9,7 +9,7 @@ const router = createRouter({
     {
       path: routes.a.home.path,
       name: routes.a.home.name,
-      component: HomeView
+      component: PanelView
     },
     {
       path: routes.b.about.path,
@@ -17,7 +17,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: AboutView
+      component: SidebarView
     }
   ]
 })

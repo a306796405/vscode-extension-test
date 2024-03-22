@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import logPath from '@/assets/logo.svg'
-import { usePublicPath, useRoutePath } from '@/hooks/use-global-definition'
+import { RouterView } from 'vue-router'
+import { useRoutePath } from '@/hooks/use-global-definition'
 import { useRouter } from 'vue-router'
 
-const logoUrl = logPath || usePublicPath(logPath)
-console.log("🚀 ~ logoUrl:", logoUrl)
 const router = useRouter()
 
 router.push({
@@ -15,9 +12,9 @@ router.push({
 </script>
 
 <template>
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
-  </nav>
+  <!-- <nav>
+    <RouterLink to="/">sidebar</RouterLink>
+    <RouterLink to="/about">panel</RouterLink>
+  </nav> -->
   <RouterView />
 </template>
