@@ -3,6 +3,7 @@
   "displayName": "extension",
   "description": "An example for wscode webview developer",
   "version": "0.0.1",
+  "publisher": "accotest",
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -43,6 +44,10 @@
         "command": "panel-view-container.show",
         "title": "xingxingzi Panel View",
         "category": "vscode-webview-example"
+      },
+      {
+        "command": "xingxingzi.sendMessenger",
+        "title": "xingxingzi Send Messenger"
       }
     ],
     "viewsContainers": {

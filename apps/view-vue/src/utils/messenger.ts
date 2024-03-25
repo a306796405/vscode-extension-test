@@ -6,7 +6,6 @@ function getMessenger() {
     if(!messenger) {
         const vscode = acquireVsCodeApi();
         messenger = new Messenger(vscode, { debugLog: true });
-        messenger.start();
     }
     return messenger;
 }

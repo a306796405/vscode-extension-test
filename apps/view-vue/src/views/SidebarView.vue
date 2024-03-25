@@ -23,6 +23,7 @@ import { useVscColorTheme } from '@/hooks/use-vsc-color-theme';
 
 // Webview 公共资源地址示例
 const carUrl = carPath || usePublicPath(carPath)
+const messenger = getMessenger();
 
 // Vscode 主题监听和设置示例
 const { colorTheme, vscColorThemeOptions, updateTheme } = useVscColorTheme()
@@ -31,13 +32,14 @@ const onChangeUpdateTheme = async () => {
 }
 
 const sendMessenger = (async () => {
-  const messenger = getMessenger();
   const addressBook = {
     bAbout: { type: 'extension', extensionId: 'sidebar-view-container' }
   } satisfies Record<string, MessageParticipant>;
   const result = await messenger.sendRequest({ method: 'add' }, addressBook.bAbout, 25);
   console.log("🚀 ~ sendMessenger ~ result:", result)
 })
+
+messenger.start()
 </script>
 
 <style>

@@ -1,4 +1,4 @@
-import { ExtensionContext, WebviewPanel, Disposable } from 'vscode';
+import { ExtensionContext, WebviewPanel, Disposable, commands } from 'vscode';
 import { AbstractViewProvider } from './view-provider-abstract';
 import { Messenger } from 'vscode-messenger';
 import { routes } from '@hf/ext-common';
@@ -33,6 +33,20 @@ export class ViewProviderPanel extends AbstractViewProvider {
         console.log("🚀 ~ ViewProviderPanel ~ disposables.push ~ firstName:", firstName);
         return `${firstName} Jiang`;
     }));
+
+    disposables.push(commands.registerCommand('xingxingzi.sendMessenger', async () => {
+      console.log('start to send messenger');
+      const fullName = await this.messenger.sendRequest(
+        {
+         method: 'babyName'
+        }, 
+        { type: 'webview', webviewType: 'panel-view-container' },
+        'Jiang'
+      );
+      console.log('fullName:', fullName);
+    }));
+    
+
     webviewPanel.onDidDispose(() => disposables.forEach(disposable => disposable.dispose()));
   }
 }
