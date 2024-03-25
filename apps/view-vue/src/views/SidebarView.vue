@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img alt="Vue logo" class="logo" :src="carUrl" width="125" height="125" />
+    <!-- <img alt="Vue logo" class="logo" :src="carUrl" width="125" height="125" /> -->
     <div class="example-block">
       <h2>主题获取、监听和设置演示</h2>
       <label for="color-theme-select">请选择 Vscode 的主题:</label>
