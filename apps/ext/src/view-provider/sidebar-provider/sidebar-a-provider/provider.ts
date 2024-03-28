@@ -9,7 +9,7 @@ export class ViewProviderSidebar extends AbstractViewProvider {
     super(context, messenger, {
       distDir: 'out/view-vue',
       indexPath: 'out/view-vue/index.html',
-      routePath: routes.b.about.path
+      routePath: routes.b.sidebarA.path
     });
   }
 
@@ -20,10 +20,9 @@ export class ViewProviderSidebar extends AbstractViewProvider {
       localResourceRoots: [this.context.extensionUri]
     };
 
-    const webviewHtml = await this.getWebviewHtml(webview);
-    webview.html = webviewHtml;
-
     this.messenger.registerWebviewView(webviewView);
     registerMessenger(webviewView, this.messenger)
+
+    webview.html = await this.getWebviewHtml(webview);
   }
 }

@@ -4,10 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "bootstrap": "pnpm install",
+    "clear": "pnpm recursive exec -- rimraf node_modules",
+    "reinstall": "pnpm clear && pnpm bootstrap",
     "dev": "run-p dev:view-*",
     "dev:ext": "pnpm run -F @hf/ext watch",
     "dev:view-vue": "pnpm run -F view-vue watch",
-    "dev:view-react": "pnpm run -F view-react watch"
+    "dev:view-react": "pnpm run -F view-react watch",
+    "dev:ext-common": "pnpm run -F ext-common build"
   },
   "keywords": [],
   "author": "",
@@ -15,14 +20,19 @@
   "dependencies": {
     "@hf/ext-common": "workspace:*",
     "path-browserify": "^1.0.1",
+    "pinia": "^2.1.7",
     "vscode-messenger": "^0.4.5",
     "vscode-messenger-common": "^0.4.5",
-    "vscode-messenger-webview": "^0.4.5"
+    "vscode-messenger-webview": "^0.4.5",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@types/path-browserify": "^1.0.2",
     "npm-run-all": "^4.1.5",
     "rimraf": "^5.0.5",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.6",
     "vite-plugin-dts": "^3.7.3",
     "vitest": "^1.2.2"
   }

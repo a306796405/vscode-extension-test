@@ -13,7 +13,7 @@ export class ViewProviderPanel extends AbstractViewProvider {
       // indexPath: 'out/view-react/index.html',
       distDir: 'out/view-vue',
       indexPath: 'out/view-vue/index.html',
-      routePath: routes.a.home.path
+      routePath: routes.a.panelA.path
     });
   }
 
@@ -21,12 +21,11 @@ export class ViewProviderPanel extends AbstractViewProvider {
     const { webview } = webviewPanel;
     webview.options = {
       enableScripts: true,
-      // localResourceRoots: [this.context.extensionUri]
+      localResourceRoots: [this.context.extensionUri]
     };
-    // this.setControllers(webview)
-    webview.html = await this.getWebviewHtml(webview);
-
     this.messenger.registerWebviewPanel(webviewPanel);
-    registerMessenger(webviewPanel, this.messenger)
+    registerMessenger(webviewPanel, this.messenger);
+
+    webview.html = await this.getWebviewHtml(webview);
   }
 }

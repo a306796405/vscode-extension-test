@@ -1,6 +1,9 @@
 <template>
   <div>
-    <!-- <img alt="Vue logo" class="logo" :src="carUrl" width="125" height="125" /> -->
+    <img alt="Vue logo" class="logo" :src="carUrl" width="125" height="125" />
+    <div class="example-block">
+      <button @click="clickToOpenPanel">打开panel窗口</button>
+    </div>
     <div class="example-block">
       <h2>主题获取、监听和设置演示</h2>
       <label for="color-theme-select">请选择 Vscode 的主题:</label>
@@ -16,31 +19,34 @@
 
 <script setup lang="ts">
 import getMessenger from '@/utils/messenger';
-import type { MessageParticipant } from 'vscode-messenger-common';
+import { messages } from '@hf/ext-common'
 import carPath from '@/assets/car.jpg'
 import { usePublicPath } from '@/hooks/use-global-definition';
 import { useVscColorTheme } from '@/hooks/use-vsc-color-theme';
+import { useCommand } from '@/hooks/use-command'
 
 // Webview 公共资源地址示例
-const carUrl = carPath || usePublicPath(carPath)
+const carUrl = usePublicPath(carPath)
 const messenger = getMessenger();
+const { sendNotification } = useCommand();
+const { panel: { panelA: { participant, methods, commands }}} = messages;
 
 // Vscode 主题监听和设置示例
 const { colorTheme, vscColorThemeOptions, updateTheme } = useVscColorTheme()
+
+const clickToOpenPanel = async () => {
+  await sendNotification({ method: methods.SHOW_PANEL }, participant, commands.SHOW_PANEL);
+}
+
 const onChangeUpdateTheme = async () => {
   await updateTheme(colorTheme.value!)
 }
-
-const sendMessenger = (async () => {
-  const addressBook = {
-    bAbout: { type: 'extension', extensionId: 'sidebar-view-container' }
-  } satisfies Record<string, MessageParticipant>;
-  const result = await messenger.sendRequest({ method: 'add' }, addressBook.bAbout, 25);
-  console.log("🚀 ~ sendMessenger ~ result:", result)
-})
 
 messenger.start()
 </script>
 
 <style>
+  .example-block {
+    margin-bottom: 20px;
+  }
 </style>

@@ -1,6 +1,24 @@
-import { ref, onUnmounted, onMounted} from 'vue'
+import { ref, onMounted} from 'vue'
 import getMessenger from '@/utils/messenger';
-import type { MessageParticipant } from 'vscode-messenger-common';
+import { messages } from '@hf/ext-common'
+
+export function useVscColorTheme() {
+  const colorTheme = ref<string>()
+  const messenger = getMessenger();
+  const { sidebar: { sidebarA: { methods, participant } } } = messages
+
+  onMounted(async() => {
+      colorTheme.value = await messenger.sendRequest({ method: methods.FETCH_THEME }, participant);
+  })
+
+  const updateTheme = async (colorTheme: string) => {
+    const result = await messenger.sendRequest({ method: methods.UPDATE_THEME }, participant, colorTheme);
+    console.log("🚀 ~ updateTheme ~ result:", result)
+  }
+
+  return { colorTheme, vscColorThemeOptions, updateTheme }
+}
+
 
 export const vscColorThemeOptions = [
   {
@@ -40,24 +58,3 @@ export const vscColorThemeOptions = [
     value: 'Red'
   }
 ]
-
-export function useVscColorTheme() {
-  const colorTheme = ref<string>()
-  const messenger = getMessenger();
-  const addressBook = {
-    fetchTheme: { type: 'extension', extensionId: 'sidebar-view-container' },
-    updateTheme: { type: 'extension', extensionId: 'sidebar-view-container' }
-  } satisfies Record<string, MessageParticipant>;
-
-  onMounted(async() => {
-     
-      colorTheme.value = await messenger.sendRequest({ method: 'fetchTheme' }, addressBook.fetchTheme);
-  })
-
-  const updateTheme = async (colorTheme: string) => {
-    const result = await messenger.sendRequest({ method: 'updateTheme' }, addressBook.updateTheme, colorTheme);
-    console.log("🚀 ~ updateTheme ~ result:", result)
-  }
-
-  return { colorTheme, vscColorThemeOptions, updateTheme }
-}

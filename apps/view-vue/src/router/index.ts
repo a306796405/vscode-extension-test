@@ -7,13 +7,13 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: routes.a.home.path,
-      name: routes.a.home.name,
+      path: routes.a.panelA.path,
+      name: routes.a.panelA.name,
       component: PanelView
     },
     {
-      path: routes.b.about.path,
-      name: routes.b.about.name,
+      path: routes.b.sidebarA.path,
+      name: routes.b.sidebarA.name,
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.

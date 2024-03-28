@@ -4,17 +4,13 @@ import type { MessageParticipant } from 'vscode-messenger-common';
 
 const messenger = getMessenger();
 
-messenger.onRequest({ method: 'babyName' }, async (text: string) => {
-    return `${text} xingyu`
-})
-
-const sendMessenger = (async () => {
-  const addressBook = {
-    aHome: { type: 'extension', extensionId: 'panel-view-container' }
-  } satisfies Record<string, MessageParticipant>;
-  const result = await messenger.sendRequest({ method: 'fullName' }, addressBook.aHome, 'Jeffery');
-  console.log("🚀 ~ sendMessenger ~ result:", result)
-})
+// const sendMessenger = (async () => {
+//   const addressBook = {
+//     aHome: { type: 'extension', extensionId: 'panel-view-container' }
+//   } satisfies Record<string, MessageParticipant>;
+//   const result = await messenger.sendRequest({ method: 'fullName' }, addressBook.aHome, 'Jeffery');
+//   console.log("🚀 ~ sendMessenger ~ result:", result)
+// })
 
 messenger.start()
 </script>

@@ -2,7 +2,6 @@ import { ref, type Ref } from 'vue'
 import { join } from 'path-browserify' // 下载：pnpm i -w path-browserify
 
 const { publicPath, routePath } = __webview_opts__;
-console.log("🚀 ~ __webview_opts__:", __webview_opts__)
 
 export function useRoutePath(): Ref<string> {
   return ref(routePath)

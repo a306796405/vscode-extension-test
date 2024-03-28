@@ -1,7 +1,13 @@
-const a = {
-    home: {
-        name: 'home',
-        path: '/home',
+import { AppRouteRecordRaws } from "@/routes/type";
+
+
+const a: AppRouteRecordRaws = {
+    panelA: {
+        name: 'panel-a',
+        path: '/panel-a',
+        meta: {
+            title: 'panel-a view'
+        }
     }
 }
 

@@ -1,10 +1,12 @@
 import { ExtensionContext, window, commands, ViewColumn } from 'vscode';
 import { Messenger } from 'vscode-messenger';
 import { ViewProviderPanel } from '../../../view-provider/panel-provider/panel-a-provider/provider';
+import { messages } from '@hf/ext-common';
 
 export default function entry(context: ExtensionContext, messenger: Messenger){
+  const { panel: { panelA } } = messages;
    // 注册react panel view指令
-  const panelViewDisposable = commands.registerCommand('panel-view-container.show', () => {
+  const panelViewDisposable = commands.registerCommand(panelA.commands.SHOW_PANEL, () => {
     const panel = window.createWebviewPanel('panel-view-container', 'Panel View', ViewColumn.One, {
       enableScripts: true
     });
